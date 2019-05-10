@@ -142,6 +142,11 @@ Updaters = {
         node.value = typeof val == 'undefined' ? '' : val;
     },
     classUpdater: function(node,val,oldvalue) {
+        var className = node.className;
+        className = className.replace(oldValue, '').replace(/\s$/, '');
 
+        var space = className && String(value) ? ' ' : '';
+
+        node.className = className + space + value;
     },
 }
