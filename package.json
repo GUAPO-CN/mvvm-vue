@@ -1,0 +1,19 @@
+{
+  "name": "update-git",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "git": "git status && git add . && git commit --no-verify -m 'update' && git push origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GUAPO-CN/bhg-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GUAPO-CN/bhg-project/issues"
+  },
+  "homepage": "https://github.com/GUAPO-CN/bhg-project#readme"
+}

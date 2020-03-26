@@ -2,72 +2,79 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>mvvm-test</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <style>
-            .class1{
-                font-weight: bold;
-            }
-            .blue{
-                color: blue;
-            }
-        </style>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>mvvm-test</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+  <style>
+    .class1 {
+      font-weight: bold;
+    }
+
+    .blue {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div id="app">
-            {{textStr}}
-            <br>
-            <input type="text" v-model='inputStr'>
-            <input type="text" v-model='parent.child'>
-            <p v-class='className' class='class1'>
-                <span v-text='textStr'></span>
-            </p>
-            <p>{{computedStr}}</p>
-            <p v-html='htmlStr'></p>
-            <button v-on:click='btnClick'>点击按钮</button>
-        </div>
+  <div id="app">
+    <input type="text" v-model='inputStr'>
+    {{textStr}}
+    <br>
+    <input type="text" v-model='parent.child'>
+    <p v-class='className' class='class1'>
+      <span v-text='textStr'></span>
+    </p>
+    <p>{{computedStr}}</p>
+    <p v-html='htmlStr'></p>
+    <button v-on:click='btnClick'>点击按钮</button>
+  </div>
 
-        <script src="js/observer.js"></script>
-        <script src="js/compile.js"></script>
-        <script src="js/watcher.js"></script>
-        <script src="js/mvvm.js"></script>
+  <script src="js/observer.js"></script>
+  <script src="js/compile.js"></script>
+  <script src="js/watcher.js"></script>
+  <script src="js/mvvm.js"></script>
 
-        <script>
-            var vm = new MVVM({
-                el:'#app',
-                data:{
-                    textStr:'hello textStr',
-                    inputStr:'hello inputStr',
-                    className:'bule',
-                    htmlStr:'<span style="color:red;">htmlStr红色字体</span>',
-                    parent:{
-                        child:'parent.child objExp'
-                    }
-                },
-                computed: {
-                    computedStr:function() {
-                        return this.inputStr + ' and ' +this.parent.child;
-                    }
-                },
-                methods: {
-                    btnClick:function(e) {
-                        var randomStrArr = ['childOne', 'childTwo', 'childThree'];
-                        this.parent.child =  randomStrArr[parseInt(Math.random()*3)];
-                    }
-                },
-            });
-            vm.$watch('parent.child',function(newValue,oldValue) {
-                console.log(newValue,oldValue,'xxxxx')
-            })
-        </script>
-    </body>
+
+  <script>
+    var vm = new MVVM({
+      el: '#app',
+      data: {
+        textStr: 'hello textStr',
+        inputStr: 'hello inputStr',
+        className: 'bule',
+        parent: {
+          child: 'parent.child objExp'
+        },
+        htmlStr: '<span style="color:red;">htmlStr红色字体</span>',
+      },
+      computed: {
+        computedStr: function () {
+          return this.inputStr + ' and ' + this.parent.child;
+        }
+      },
+      methods: {
+        btnClick: function (e) {
+          var randomStrArr = ['childOne', 'childTwo', 'childThree'];
+          this.parent.child = randomStrArr[parseInt(Math.random() * 3)];
+        }
+      },
+    });
+    vm.$watch('parent.child', function (newValue, oldValue) {
+      console.log(newValue, oldValue, 'xxxxx')
+    })
+  </script>
+</body>
+
 </html>
